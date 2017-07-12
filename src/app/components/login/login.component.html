@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+            <form class="form-login" [formGroup]="loginGroup">
+                <h4>Welcome back.</h4>
+                <input type="email" id="email" formControlName="email" class="form-control input-sm chat-input" placeholder="email" />
+                <br>
+                <input type="password" id="password"l formControlName="password" class="form-control input-sm chat-input" placeholder="password" />
+                <br>
+                <div class="wrapper">
+                    <span class="group-btn">     
+                    <button href="#" on-click="loginUser()" class="btn btn-primary btn-md">login</button>
+                    </span>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
