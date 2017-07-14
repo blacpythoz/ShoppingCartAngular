@@ -1,25 +1,29 @@
 <div class="container">
     <div class="row">
         <div class="col-md-offset-4 col-md-4">
-        <form [formGroup]="registerGroup">
-                <h4>Register</h4>
-                <input type="text" id="name" name="name" class="form-control input-sm chat-input" formControlName="name" placeholder="name" />
-                <br>
-                <input type="password" id="password" name="password" class="form-control input-sm chat-input" formControlName="password" placeholder="password" />
-                <br>
-                <input type="password" id="repassword" name="password_confirmation" class="form-control input-sm chat-input" formControlName="password_confirmation" placeholder="Confirm Password" />
-                <br>
-                <input type="email" id="email" name="email" class="form-control input-sm chat-input" formControlName="email" placeholder="Email" />
-                <br>
-                <input type="text" id="address" name="address" class="form-control input-sm chat-input" formControlName="address" placeholder="address" />
-                <br>
-                <input type="text" id="phone" name="phone" class="form-control input-sm chat-input" formControlName="phone" placeholder="phone" />
-                <br>
+            <form [formGroup]="registerGroup">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Register New User</div>
+                    <div class="panel-body">
+                        <input type="text" id="name" name="name" class="form-control input-sm chat-input" formControlName="name" placeholder="name" />
+                        <br>
+                        <input type="password" id="password" name="password" class="form-control input-sm chat-input" formControlName="password" placeholder="password" />
+                        <br>
+                        <input type="password" id="repassword" name="password_confirmation" class="form-control input-sm chat-input" formControlName="password_confirmation" placeholder="Confirm Password" />
+                        <br>
+                        <input type="email" id="email" name="email" class="form-control input-sm chat-input" formControlName="email" placeholder="Email" />
+                        <br>
+                        <input type="text" id="address" name="address" class="form-control input-sm chat-input" formControlName="address" placeholder="address" />
+                        <br>
+                        <input type="text" id="phone" name="phone" class="form-control input-sm chat-input" formControlName="phone" placeholder="phone" />
+                        <br>
 
-                <div class="wrapper">
-                    <span class="group-btn">     
-                        <button href="#" class="btn btn-primary btn-md" on-click="registerUser()">Register</button>
-                    </span>
+                        <div class="wrapper">
+                            <span class="group-btn">     
+                                <button href="#" class="btn btn-primary btn-md" on-click="registerUser()">Register</button>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </form>
 

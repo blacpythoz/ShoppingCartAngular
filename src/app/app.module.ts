@@ -4,6 +4,7 @@ import { ProductService } from './services/product.service';
 import { UserService } from './services/user.service';
 import { SearchService } from './services/search.service';
 import { AllProductComponent } from './components/product/allProduct.component';
+import { OrderProductComponent } from './components/product/orderProduct.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -21,9 +22,25 @@ import { LoggedInGuard } from './guards/loggedIn.guard';
 import { AppComponent }  from './app.component';
 
 @NgModule({
-  imports:      [ BrowserModule,HttpModule,RouterModule.forRoot(routes),FormsModule,ReactiveFormsModule ],
-  declarations: [ AppComponent,AllProductComponent,NavbarComponent,LoginComponent,RegisterComponent],
+  imports:      [ BrowserModule,
+  					HttpModule,
+  					RouterModule.forRoot(routes),
+  					FormsModule,
+  					ReactiveFormsModule 
+  				],
+  declarations: [ AppComponent,
+  					AllProductComponent,
+  					NavbarComponent,
+  					OrderProductComponent,
+  					LoginComponent,
+  					RegisterComponent
+  				],
   bootstrap:    [ AppComponent ],
-  providers: [ProductService,UserService,AuthGuard,LoggedInGuard,SearchService],
+  providers: 	[ ProductService,
+  					UserService,
+  					AuthGuard,
+  					LoggedInGuard,
+  					SearchService
+  			 	],
 })
 export class AppModule { }

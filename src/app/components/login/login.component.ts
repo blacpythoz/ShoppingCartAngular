@@ -25,8 +25,8 @@ export class LoginComponent {
 	loginUser() {
 		this._userService.loginUser(this.loginGroup.value).subscribe(res=>{
 			console.log(res);
-			if(res.messagecode==200) {
-			localStorage.setItem('user', 'logged in');
+			if(res.message.messagecode==200) {
+				localStorage.setItem('user', JSON.stringify(res.user));
 			//var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 			//var token = currentUser.token; // your token
 			console.log("Logged in successfully");

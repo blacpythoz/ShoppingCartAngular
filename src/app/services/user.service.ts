@@ -15,13 +15,13 @@ export class UserService {
 	}
 
 	registerUser(user:LoginUser) {
-		this.registerUrl='http://local.dev/api/user/register';
+		this.registerUrl='http://local.dev/api/register';
 		console.log("Called function register user");
 		return this._http.post(this.registerUrl,user).map(res=>res.json());
 	}
 
 	loginUser(user:RegisterUser) {
-		this.loginUrl='http://local.dev/api/user/login';
+		this.loginUrl='http://local.dev/api/login';
 		console.log("Called function login user");
 		return this._http.post(this.loginUrl,user).map(res=>res.json());
 	}

@@ -1,4 +1,4 @@
-export interface Product {
+export class Product {
 	created_at:string;
 	discountPrice:string;
 	feature_id:string;

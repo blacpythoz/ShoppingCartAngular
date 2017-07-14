@@ -9,9 +9,8 @@
                         <h4><a href="#">{{product.name}}</a>
                         </h4>
                         <a target="_blank" href="http://www.bootsnipp.com">View Product</a>.
-
                         <div *ngIf="checkLogin()">
-                            <a  class="pull-right">Add to cart</a>.
+                            <a  class="pull-right" routerLink="/order/{{product.id}}">Add to cart</a>.
                         </div>
                     </div>
                 </div>
@@ -21,10 +20,16 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Filters</div>
                 <div class="panel-body">
-                <input type="text" class="form-control" [formControl]="term" placeholder="Search">
-              </div><!-- /input-group -->
-          </div>
-      </div>
-
-  </div>
+                    <form [formGroup]="searchGroup">
+                        <input type="text" class="form-control" formControlName="term" placeholder="Search">
+                        <input type="date" class="form-control" formControlName="fromDate">
+                        <input type="date" class="form-control" formControlName="toDate">
+                        <input type="text" class="form-control" formControlName="fromPrice" placeholder="From Price">
+                        <input type="text" class="form-control" formControlName="toPrice" placeholder="To Price">
+                        <input type="submit" class="form-control" on-click="searchProduct()" class="btn btn-primary" name="submit" value="Filter Product">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

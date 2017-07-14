@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { SearchFilter } from './searchFilter';
+
 
 @Injectable()
 
@@ -10,12 +12,9 @@ export class SearchService {
 		console.log("Search service initailized");
 	}
 
-	searchProduct(term:string) {
-		//var headers=new Headers();
-		//headers.append
-		//this.searchUrl='http://local.dev/api/user/search?keyword='+term;
-		this.searchUrl='http://local.dev/api/user/search?term='+term;
-		console.log(this.searchUrl);
-		return this._http.get(this.searchUrl).map(res=>res.json());
+	searchProduct(searchFilter:SearchFilter) {
+		this.searchUrl='http://local.dev/api/search';
+		console.log("Called function search products ");
+		return this._http.post(this.searchUrl,searchFilter).map(res=>res.json());
 	}
 }
