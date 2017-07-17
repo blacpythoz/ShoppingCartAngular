@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import {FormGroup } from '@angular/forms';
-import {FormControl,Validators } from '@angular/forms';
+import { Component,OnInit } from '@angular/core';
+import {FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { PasswordValidation } from './passwordValidation';
+
+
 
 @Component({
 	moduleId:module.id,
@@ -10,17 +12,28 @@ import { UserService } from '../../services/user.service';
 })
 
 export class RegisterComponent {
-	constructor(private _userService:UserService) {
+	registerGroup:FormGroup;
+	constructor(private _userService:UserService,private fb:FormBuilder) {
 		console.log("called register component");
 	}
-	registerGroup=new FormGroup({
-		name:new FormControl(),
-		password:new FormControl(),
-		email:new FormControl(),
-		phone:new FormControl(),
-		address:new FormControl(),
-		password_confirmation:new FormControl(),
-	})
+
+	ngOnInit() {
+		this.registerGroup = this.fb.group({
+			name: ['', [Validators.required, Validators.minLength(2)]],
+			password: ['', [Validators.required, Validators.minLength(2)]],
+			email: ['', [Validators.required, Validators.minLength(2)]],
+			address: ['', [Validators.required, Validators.minLength(2)]],
+			phone: ['', [Validators.required, Validators.minLength(2)]],
+			password_confirmation: ['', [Validators.required, Validators.minLength(2)]],
+		},{
+			validator: PasswordValidation.MatchPassword // your validation method
+		});
+	}
+
+	checkError(name:string) {
+		return this.registerGroup.get(name).hasError('required') && this.registerGroup.get(name).touched;
+	}
+
 
 	registerUser() {
 		this._userService.registerUser(this.registerGroup.value).subscribe(res=>{

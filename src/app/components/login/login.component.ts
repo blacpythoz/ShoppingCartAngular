@@ -18,22 +18,22 @@ export class LoginComponent {
 		console.log("called register component");
 	}
 	loginGroup=new FormGroup({
-		email:new FormControl(),
-		password:new FormControl(),
+		email:new FormControl('',[Validators.required, Validators.minLength(2)]),
+		password:new FormControl('',[Validators.required, Validators.minLength(2)]),
 	})
 
 	loginUser() {
-		this._userService.loginUser(this.loginGroup.value).subscribe(res=>{
+		console.log(this.loginGroup.value,this.loginGroup.valid);
+		/*this._userService.loginUser(this.loginGroup.value).subscribe(res=>{
 			console.log(res);
 			if(res.message.messagecode==200) {
 				localStorage.setItem('user', JSON.stringify(res.user));
-			//var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-			//var token = currentUser.token; // your token
 			console.log("Logged in successfully");
 	        this.router.navigate(['']);
 
 			}
 		});
+		*/
 	}
 
 }

@@ -1,21 +1,24 @@
 <div class="container">
     <div class="row">
         <div class="col-md-offset-4 col-md-4">
-            <form class="form-login" [formGroup]="loginGroup">
+            <form class="form-login" (ngSubmit)="loginUser()" [formGroup]="loginGroup">
                 <div class="panel panel-default">
                     <div class="panel-heading">Login</div>
                     <div class="panel-body">
 
-                        <div *ngIf="formErrors.email" class="alert alert-danger">
-                              {{ formErrors.email }}
+                    <div class="alert alert-danger" *ngIf="loginGroup.get('email').hasError('required') && loginGroup.get('email').touched">
+                              Email is needed
                         </div>
-                        <input type="email" id="email" formControlName="email" class="form-control input-sm chat-input" placeholder="email" />
+                        <input type="email" id="email" formControlName="email" class="form-control input-sm chat-input" required="required" placeholder="email" />
                         <br>
-                        <input type="password" id="password"l formControlName="password" class="form-control input-sm chat-input" placeholder="password" />
+                        <div class="alert alert-danger" *ngIf="loginGroup.get('password').hasError('required') && loginGroup.get('password').touched">
+                            Please insert the password
+                        </div>
+                        <input type="password" id="password"l formControlName="password" class="form-control input-sm chat-input" required="required" placeholder="password" />
                         <br>
                         <div class="wrapper">
                             <span class="group-btn">     
-                                <button href="#" on-click="loginUser()" class="btn btn-primary btn-md">login</button>
+                                  <button type="submit" [disabled]="loginGroup.invalid" class="btn btn-primary btn-md">Login</button>
                             </span>
                         </div>
                     </div>
