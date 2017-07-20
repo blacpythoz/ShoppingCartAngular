@@ -4,8 +4,12 @@ import { ProductService } from './services/product.service';
 import { UserService } from './services/user.service';
 import { SearchService } from './services/search.service';
 import { AllProductComponent } from './components/product/allProduct.component';
+
+import { HomeComponent } from './components/home/home.component';
+import { SingleProductComponent } from './components/product/singleProduct.component';
 import { OrderProductComponent } from './components/product/orderProduct.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpModule } from '@angular/http';
@@ -29,11 +33,14 @@ import { AppComponent }  from './app.component';
   					ReactiveFormsModule 
   				],
   declarations: [ AppComponent,
+            HomeComponent,
   					AllProductComponent,
+            CheckoutComponent,
   					NavbarComponent,
   					OrderProductComponent,
   					LoginComponent,
-  					RegisterComponent
+  					RegisterComponent,
+            SingleProductComponent,
   				],
   bootstrap:    [ AppComponent ],
   providers: 	[ ProductService,

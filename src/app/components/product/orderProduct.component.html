@@ -2,13 +2,13 @@
 	<div class="row">
 		<div class="col-md-8">
 		<h1> Product Info</h1>
-			<img src="http://local.dev/uploads/products/{{product.image_path}}" height=150 width=320 alt="">
-			<h4>Price: ${{product.price}}</h4>
-			<h4>Name: <a href="#">{{product.name}}</a> </h4>
-			<h4>Discount Price: <a href="#">{{product.discountPrice}}</a> </h4>
-			<h4>Size: <a href="#">{{feature.size}}</a> </h4>
-			<h4>Color: <a href="#">{{feature.color}}</a> </h4>
-			<h4>Weight: <a href="#">{{feature.weight}}</a> </h4>
+            <img *ngIf="product?.medias" src="http://local.dev/uploads/products/{{product?.medias[0].path}}" height=150 width=320 alt="">
+			<h4>Price: ${{product?.price}}</h4>
+			<h4>Name: <a href="#">{{product?.name}}</a> </h4>
+			<h4>Discount Price: <a href="#">{{product?.discountPrice}}</a> </h4>
+			<h4>Size: <a href="#">{{product?.feature.size}}</a> </h4>
+			<h4>Color: <a href="#">{{product?.feature.color}}</a> </h4>
+			<h4>Weight: <a href="#">{{product?.feature.weight}}</a> </h4>
 			<div class="col-sm-2">
 				
 			<form [formGroup]="addToCartGroup">
@@ -19,12 +19,12 @@
 		</div>
 		<div class="col-md-4">
 		<h1> Users Info </h1>
-		<h4> Name: {{ userInfo.name }}</h4>
-		<h4> Email: {{ userInfo.email }}</h4>
-		<h4> Phone: {{ userInfo.phone }}</h4>
-		<h4> Address: {{ userInfo.address }}</h4>
-		<h4> Type: {{ userInfo.type }}</h4>
-		<h4> Registerd On: {{ userInfo.created_at }}</h4>
+		<h4> Name: {{ userInfo?.name }}</h4>
+		<h4> Email: {{ userInfo?.email }}</h4>
+		<h4> Phone: {{ userInfo?.phone }}</h4>
+		<h4> Address: {{ userInfo?.address }}</h4>
+		<h4> Type: {{ userInfo?.type }}</h4>
+		<h4> Registerd On: {{ userInfo?.created_at }}</h4>
 			
 		</div>
 	</div>

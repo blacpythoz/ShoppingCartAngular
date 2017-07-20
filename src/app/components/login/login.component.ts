@@ -23,8 +23,8 @@ export class LoginComponent {
 	})
 
 	loginUser() {
-		console.log(this.loginGroup.value,this.loginGroup.valid);
-		/*this._userService.loginUser(this.loginGroup.value).subscribe(res=>{
+		//console.log(this.loginGroup.value,this.loginGroup.valid);
+		this._userService.loginUser(this.loginGroup.value).subscribe(res=>{
 			console.log(res);
 			if(res.message.messagecode==200) {
 				localStorage.setItem('user', JSON.stringify(res.user));
@@ -33,7 +33,7 @@ export class LoginComponent {
 
 			}
 		});
-		*/
+		
 	}
 
 }

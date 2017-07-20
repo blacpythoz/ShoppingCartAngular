@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {ProductService } from '../../services/product.service';
 import {SearchService } from '../../services/search.service';
-import { Product } from './product';
-import { Media } from './media';
+import { Product } from '../product/product';
+import { Media } from '../product/media';
 
 import {FormControl } from '@angular/forms';
 import {FormGroup } from '@angular/forms';
@@ -10,11 +10,11 @@ import 'rxjs/add/operator/debounceTime';
 
 @Component({
 	moduleId:module.id,
-	selector:'allproduct',
-	templateUrl:'allProduct.component.html',
+	selector:'home',
+	templateUrl:'home.component.html',
 })
 
-export class AllProductComponent {
+export class HomeComponent {
 	term=new FormControl();
 	products:Product[];
 	featureImages:Media[];
@@ -23,7 +23,6 @@ export class AllProductComponent {
 		this._productService.getAllProduct().subscribe(res=>{
 			this.products=res.product;
 			// add the values of the object into the array
-			// or more likely adding the json value to the array
 			var obj=res.featureImage;
 			this.featureImages = Object.keys(obj).map(function(k) { return obj[k] });
 			console.log(this.featureImages);
