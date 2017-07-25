@@ -7,6 +7,7 @@ import { AllProductComponent } from './components/product/allProduct.component';
 
 import { HomeComponent } from './components/home/home.component';
 import { SingleProductComponent } from './components/product/singleProduct.component';
+import { EditUserComponent } from './components/user/editUser.component';
 import { OrderProductComponent } from './components/product/orderProduct.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -18,6 +19,9 @@ import { routes } from './app.routes';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
+
+import { PhoneFormatDirective } from './components/checkout/phoneFormat.directive';
+
 import { LoggedInGuard } from './guards/loggedIn.guard';
 
 //import { CookieService } from 'angular2-cookie/services/cookies.service';
@@ -30,7 +34,7 @@ import { AppComponent }  from './app.component';
   					HttpModule,
   					RouterModule.forRoot(routes),
   					FormsModule,
-  					ReactiveFormsModule 
+  					ReactiveFormsModule,
   				],
   declarations: [ AppComponent,
             HomeComponent,
@@ -39,8 +43,11 @@ import { AppComponent }  from './app.component';
   					NavbarComponent,
   					OrderProductComponent,
   					LoginComponent,
+  					EditUserComponent,
   					RegisterComponent,
             SingleProductComponent,
+          PhoneFormatDirective,
+
   				],
   bootstrap:    [ AppComponent ],
   providers: 	[ ProductService,

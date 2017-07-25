@@ -13,6 +13,7 @@ export class NavbarComponent {
 	}
 	logout() {
 		localStorage.removeItem('user');
+		localStorage.removeItem('carts');
 	}
 }
 

@@ -16,7 +16,7 @@ import { Product } from './product';
 
 export class SingleProductComponent {
 	id:string;
-	product=Product;
+	product=new Product();
 
 
 	addToCartGroup=new FormGroup({
@@ -50,7 +50,7 @@ export class SingleProductComponent {
 		    var curr_year = d.getFullYear();
 
 		  // manually creating the json object and appending to the previous value
-		 carts[this.product.id+'']={
+		 	carts[this.product.id+'']={
 		 	"name":this.product.name,
 		 	"product_id":this.product.id,
 		 	"quantity":this.addToCartGroup.value.quantity,
@@ -60,7 +60,6 @@ export class SingleProductComponent {
 		 	"date":curr_date + "-" + curr_month + "-" + curr_year,
 
 		 };
-
-		 localStorage.setItem('carts', JSON.stringify(carts));
+		localStorage.setItem('carts', JSON.stringify(carts));
 	}
 }

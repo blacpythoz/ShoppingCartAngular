@@ -17,11 +17,13 @@ export class ProductService {
 		return this._http.get('http://local.dev/api/product/'+id).map(res=>res.json());
 	}
 
-	addToCart(pid:string,uid:string,quantity:string) {
+	addToCart(pid:string,uid:string,quantity:string,phone:string,address:string) {
 		var body={
 			'product_id':pid,
 			'user_id':uid,
 			'quantity':quantity,
+			'phone':phone,
+			'address':address,
 		};
 		console.log(body);
 		return this._http.post('http://local.dev/api/user/order',body).map(res=>res.json());

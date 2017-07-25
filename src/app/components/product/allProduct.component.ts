@@ -9,44 +9,45 @@ import {FormGroup } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 
 @Component({
-	moduleId:module.id,
-	selector:'allproduct',
-	templateUrl:'allProduct.component.html',
+    moduleId:module.id,
+    selector:'allproduct',
+    templateUrl:'allProduct.component.html',
 })
 
 export class AllProductComponent {
-	term=new FormControl();
-	products:Product[];
-	featureImages:Media[];
-	constructor(private _productService:ProductService,private _searchService:SearchService) {
-		console.log("Product comonent initialized");
-		this._productService.getAllProduct().subscribe(res=>{
-			this.products=res.product;
-			// add the values of the object into the array
-			// or more likely adding the json value to the array
-			var obj=res.featureImage;
-			this.featureImages = Object.keys(obj).map(function(k) { return obj[k] });
-			console.log(this.featureImages);
-		})
-	}
+    term=new FormControl();
+    products:Product[];
+    featureImages:Media[];
+    constructor(private _productService:ProductService,private _searchService:SearchService) {
+        console.log("Product comonent initialized");
+        this._productService.getAllProduct().subscribe(res=>{
+            this.products=res.product;
+            // add the values of the object into the array
+            // or more likely adding the json value to the array
+            var obj=res.featureImage;
+            this.featureImages = Object.keys(obj).map(function(k) { return obj[k] });
+            console.log(this.featureImages);
+        })
+    }
 
-	searchGroup=new FormGroup({
-		fromDate:new FormControl(),
-		toDate:new FormControl(),
-		fromPrice:new FormControl(),
-		toPrice:new FormControl(),
-		term:new FormControl(),
-	})
+    searchGroup=new FormGroup({
+        fromDate:new FormControl(),
+        toDate:new FormControl(),
+        fromPrice:new FormControl(),
+        toPrice:new FormControl(),
+        term:new FormControl(),
+    })
 
-	searchProduct() {
-		this._searchService.searchProduct(this.searchGroup.value).subscribe(res=>{
+    searchProduct() {
+        this._searchService.searchProduct(this.searchGroup.value).subscribe(res=>{
 
-			this.products=res.data;
-			console.log(res.data);
-		});
-	}
+            this.products=res.data;
+            console.log(res.data);
+        });
+    }
 
-	checkLogin() {
-		return localStorage.getItem('user');
-	}
+    checkLogin() {
+        return localStorage.getItem('user');
+    }
+
 }

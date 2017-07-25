@@ -48,4 +48,43 @@ export class HomeComponent {
 	checkLogin() {
 		return localStorage.getItem('user');
 	}
+
+
+	addToCart(id:string) {
+
+		// create cart if doesnot exist
+		var carts = JSON.parse(localStorage.getItem('carts')) || {};
+		// find the clicked product from the array of products
+		var product={};
+		var i, len = this.products.length;
+	    for (i = 0; i < len; i++) {
+	        if (this.products[i] && this.products[i].hasOwnProperty("id") && this.products[i]["id"]==id) {
+	        	product=this.products[i];
+	        	console.log(product);
+	        }
+	    }
+		
+		// date
+		   var d = new Date();
+		    var curr_date = d.getDate();
+		    var curr_month = d.getMonth() + 1; 
+		    var curr_year = d.getFullYear();
+
+		  // manually creating the json object and appending to the previous value
+		 
+		 	carts[product.id+'']={
+		 	"name":product.name,
+		 	"product_id":product.id,
+		 	"quantity":"1",
+		 	"image":product.medias[0].path,
+		 	"brand":product.brand,
+		 	"price":product.discountPrice,
+		 	"date":curr_date + "-" + curr_month + "-" + curr_year,
+
+		 };
+
+		localStorage.setItem('carts', JSON.stringify(carts));
+		
+	}
 }
+

@@ -42,9 +42,9 @@
                             <h4><a routerLink="product/{{product.id}}" >{{product.name}}</a>
                             </h4>
                             <a routerLink="product/{{product.id}}">View Product</a>.
-                            <div *ngIf="checkLogin()">
-                                <a  class="pull-right" routerLink="/order/{{product.id}}">Add to cart</a>.
-                            </div>
+                            <!--div *ngIf="checkLogin()"-->
+                                <a  class="pull-right" on-click="addToCart(product.id)">Add to cart</a>.
+                            <!--/div-->
                         </div>
                     </div>
                 </div>
