@@ -43,9 +43,9 @@ export class OrderProductComponent {
 
 	addToCart() {
 		console.log(this.addToCartGroup.value.quantity);
-		this._productService.addToCart(this.product.id,this.userInfo.id,this.addToCartGroup.value.quantity).subscribe(res=>{
-			console.log(res);
-		})
+		// this._productService.addToCart(this.product.id,this.userInfo.id,this.addToCartGroup.value.quantity).subscribe(res=>{
+		// 	console.log(res);
+		// })
 	}
 
 }

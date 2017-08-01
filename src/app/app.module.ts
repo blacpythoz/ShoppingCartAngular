@@ -12,6 +12,7 @@ import { OrderProductComponent } from './components/product/orderProduct.compone
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
+import { CallBackComponent } from './components/login/callback.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -45,6 +46,7 @@ import { AppComponent }  from './app.component';
   					LoginComponent,
   					EditUserComponent,
   					RegisterComponent,
+            CallBackComponent,
             SingleProductComponent,
           PhoneFormatDirective,
 

@@ -29,8 +29,9 @@ export class LoginComponent {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
+    // simple login user or old login system before implementing api logins
 	loginUser() {
-		//console.log(this.loginGroup.value,this.loginGroup.valid);
+		//console.log(this.loginGroup.value,this.loginGrloup.valid);
 		this._userService.loginUser(this.loginGroup.value).subscribe(res=>{
 			console.log(res);
 			if(res.message.messagecode==200) {
@@ -43,5 +44,28 @@ export class LoginComponent {
 		});
 		
 	}
+
+	//api password login with passport as backend
+	apiLoginUser() {
+		this._userService.apiLoginUser(this.loginGroup.value.email,this.loginGroup.value.password).subscribe(res=>{
+			console.log(res);
+			if(res.access_token) {
+				localStorage.setItem('access_token',JSON.stringify(res.access_token));
+				this._userService.apiGetUserInformation(res.access_token).subscribe(res=>{
+					console.log("userinformation",res);
+					localStorage.setItem('user', JSON.stringify(res));
+				})
+				console.log("Logged in successfully");
+				//login successfully so redirect to return url
+				this.router.navigateByUrl(this.returnUrl);
+			}
+		})
+	}
+
+	// api implicit login with
+	apiWebLogin() {
+	    window.location.href='http://local.dev/oauth/authorize?client_id=2&redirect_uri=http://localhost:3000/callback&response_type=token';
+	}
+	
 
 }

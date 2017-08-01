@@ -71,7 +71,7 @@ export class HomeComponent {
 		    var curr_year = d.getFullYear();
 
 		  // manually creating the json object and appending to the previous value
-		 
+		 /**
 		 	carts[product.id+'']={
 		 	"name":product.name,
 		 	"product_id":product.id,
@@ -84,7 +84,7 @@ export class HomeComponent {
 		 };
 
 		localStorage.setItem('carts', JSON.stringify(carts));
-		
+		**/
 	}
 }
 

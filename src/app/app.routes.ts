@@ -4,6 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { SingleProductComponent } from './components/product/singleProduct.component';
 import { OrderProductComponent } from './components/product/orderProduct.component';
 import { LoginComponent } from './components/login/login.component';
+
+import { CallBackComponent } from './components/login/callback.component';
 import { EditUserComponent } from './components/user/editUser.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -13,6 +15,7 @@ import { LoggedInGuard } from './guards/loggedIn.guard';
 export const routes:Routes= [
 	{path:'',component:HomeComponent},
 	{path:'products',component:AllProductComponent},
+	{path:'callback',component:CallBackComponent},
 	{path:'product/:id',component:SingleProductComponent},
 	{path:'login',component:LoginComponent, canActivate:[LoggedInGuard]},
 	{path:'checkout',component:CheckoutComponent, canActivate:[AuthGuard]},
