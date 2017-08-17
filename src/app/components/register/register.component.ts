@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import {FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { PasswordValidation } from './passwordValidation';
+import { DatePickerComponent } from '../datepicker/datepicker.component';
+import { ToastNotifyComponent } from '../toastnotify/toastnotify.component';
 
 
 
@@ -13,6 +15,9 @@ import { PasswordValidation } from './passwordValidation';
 
 export class RegisterComponent {
 	registerGroup:FormGroup;
+	message:string="";
+	display:boolean=false;
+	type:string="";
 	constructor(private _userService:UserService,private fb:FormBuilder) {
 		console.log("called register component");
 	}
@@ -36,10 +41,13 @@ export class RegisterComponent {
 
 
 	registerUser() {
+
 		this._userService.registerUser(this.registerGroup.value).subscribe(res=>{
 			console.log(res);
 			if(res.messagecode==201) {
-				console.log("Created user successfully");
+				this.message="Created user successfully. Please go to login page to logged in";
+				this.type="success";
+				this.display=true;
 			}
 		});
 	}

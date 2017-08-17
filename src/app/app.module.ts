@@ -14,6 +14,11 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { LoginComponent } from './components/login/login.component';
 import { CallBackComponent } from './components/login/callback.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DatePickerModule } from './components/datepicker/datepicker.module';
+import { ToastNotifyModule } from './components/toastnotify/toastnotify.module';
+
+import { LoadingModule } from './components/loading/loading.module';
+
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
@@ -31,32 +36,42 @@ import { LoggedInGuard } from './guards/loggedIn.guard';
 import { AppComponent }  from './app.component';
 
 @NgModule({
-  imports:      [ BrowserModule,
+  imports:[ 
+            BrowserModule,
   					HttpModule,
   					RouterModule.forRoot(routes),
   					FormsModule,
   					ReactiveFormsModule,
+            DatePickerModule,
+            ToastNotifyModule,
+            LoadingModule,
   				],
-  declarations: [ AppComponent,
-            HomeComponent,
-  					AllProductComponent,
-            CheckoutComponent,
-  					NavbarComponent,
-  					OrderProductComponent,
-  					LoginComponent,
-  					EditUserComponent,
-  					RegisterComponent,
-            CallBackComponent,
-            SingleProductComponent,
-          PhoneFormatDirective,
+          
+  declarations:[ 
+                  AppComponent,
+                  HomeComponent,
+  					      AllProductComponent,
+                  CheckoutComponent,
+  				      	NavbarComponent,
+  					      OrderProductComponent,
+  					      LoginComponent,
+  			      		EditUserComponent,
+    					    RegisterComponent,
+                  CallBackComponent,
+                  SingleProductComponent,
+                  PhoneFormatDirective,
+        				],
 
-  				],
-  bootstrap:    [ AppComponent ],
-  providers: 	[ ProductService,
-  					UserService,
-  					AuthGuard,
-  					LoggedInGuard,
-  					SearchService
-  			 	],
+  bootstrap:[ 
+              AppComponent 
+            ],
+
+  providers:[ 
+              ProductService,
+    					UserService,
+    					AuthGuard,
+    					LoggedInGuard,
+    					SearchService
+    			 	],
 })
 export class AppModule { }

@@ -35,7 +35,7 @@
             <h1> Latest Products </h1>
 
                 <div class="col-sm-4 col-lg-4 col-md-4" *ngFor="let product of products">
-                    <div class="thumbnail">
+                    <div class="thumbnail materialBox">
                         <a routerLink="product/{{product.id}}"><img src="http://local.dev/uploads/products/{{product.medias[0].path}}" height=150 width=320 alt=""></a>
                         <div class="caption">
                             <h4 class="pull-right">${{product.price}}</h4>

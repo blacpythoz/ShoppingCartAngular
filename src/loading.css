@@ -1,0 +1,26 @@
+.main
+{
+	margin: auto;
+	padding: 0;
+	width: 90%;
+}
+.box
+{
+	margin-top: 20%;
+	margin-left:40%;
+	padding: 0;
+	border-width:100px;
+	border-style: solid;
+	border-color: #000;
+	animation-name:first;
+	animation-duration:1s;
+	animation-iteration-count:infinite;
+}
+@keyframes first
+{
+	0% {border-color: #000 transparent transparent transparent;}
+	25% {border-color:transparent #000 transparent transparent;}
+	50% {border-color:transparent transparent #000 transparent;}
+	75% {border-color:transparent transparent transparent #000;}
+	100% {border-color: #000 transparent transparent transparent; }
+}

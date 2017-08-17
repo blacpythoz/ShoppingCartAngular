@@ -6,7 +6,7 @@
             <h1> Latest Products </h1>
 
                 <div class="col-sm-4 col-lg-4 col-md-4" *ngFor="let product of products">
-                    <div class="thumbnail">
+                    <div class="thumbnail materialBox">
                         <a routerLink="/product/{{product.id}}"><img src="http://local.dev/uploads/products/{{product.medias[0].path}}" height=150 width=320 alt=""></a>
                         <div class="caption">
                             <h4 class="pull-right">${{product.price}}</h4>
@@ -26,12 +26,12 @@
                 <div class="panel-heading">Filters</div>
                 <div class="panel-body">
                     <form [formGroup]="searchGroup">
-                        <input type="text" class="form-control" formControlName="term" placeholder="Search">
-                        <input type="date" class="form-control" formControlName="fromDate">
-                        <input type="date" class="form-control" formControlName="toDate">
-                        <input type="text" class="form-control" formControlName="fromPrice" placeholder="From Price">
-                        <input type="text" class="form-control" formControlName="toPrice" placeholder="To Price">
-                        <input type="submit" class="form-control" on-click="searchProduct()" class="btn btn-primary" name="submit" value="Filter Product">
+                        <input type="text" class="form-control mt8" formControlName="term" placeholder="Search">
+                        <input type="date" class="form-control mt8" formControlName="fromDate" placeholder="From Date">
+                        <input type="date" class="form-control mt8" formControlName="toDate" placeholder="To Date">
+                        <input type="text" class="form-control mt8" formControlName="fromPrice" placeholder="From Price">
+                        <input type="text" class="form-control mt8" formControlName="toPrice" placeholder="To Price">
+                        <input type="submit" on-click="searchProduct()" class="btn btn-primary mt8" name="submit" value="Filter Product">
                     </form>
                 </div>
             </div>

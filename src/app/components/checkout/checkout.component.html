@@ -1,6 +1,67 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Choose your cart</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <table class="table table-bordered table-striped">
+                                    <caption> Local Products </caption>
+                                        <thead>
+                                            <tr>
+                                                <th> Image </th>
+                                                <th> Name </th>
+                                                <th> Quantity </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let cart of carts; let index=index">
+                                                <td> <img src="http://local.dev/uploads/products/{{ cart.image }}" height=100 width=100 alt=""> </td>
+                                                <td> {{ cart.name }} </td>
+                                                <td> {{ cart.quantity }} </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table class="table table-bordered table-striped">
+                                    <caption> Remote products</caption>
+                                        <thead>
+                                            <tr>
+                                                <th> Image </th>
+                                                <th> Name </th>
+                                                <th> Quantity </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let preOrder of remotePreCarts; let index=index">
+                                                <td> <img src="http://local.dev/uploads/products/{{ preOrder.image }}" height=100 width=100 alt=""> </td>
+                                                <td> {{ preOrder.name }} </td>
+                                                <td> {{ preOrder.quantity }} </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" >Merge</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Local</button>
+                            <button type="button" class="btn btn-primary" on-click="changeToRemote()" >Remote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of modal-->
             <h3> List of Ordered Products </h3>
             <table class="table table-bordered table-striped">
                 <thead>
@@ -14,8 +75,21 @@
                         <th> Order Date </th>
                     </tr>
                 </thead>
+                
+                <tbody *ngIf="remoteStatus();else showRemoteInfo">
+                    <tr *ngFor="let cart of remotePreCarts; let index=index">
+                        <td> {{ index+1 }} </td>
+                        <td> <img src="http://local.dev/uploads/products/{{ cart.image }}" height=100 width=100 alt=""> </td>
+                        <td> {{ cart.name }} </td>
+                        <td> {{ cart.brand }} </td>
+                        <td> {{ cart.price }} </td>
+                        <td> {{ cart.quantity }} </td>
+                        <td> {{ cart.updated_at }} </td>
+                    </tr>
+                </tbody>
+                <ng-template #showRemoteInfo>
                 <tbody>
-                    <tr *ngFor="let cart of carts; let index=index"> 
+                    <tr *ngFor="let cart of carts; let index=index">
                         <td> {{ index+1 }} </td>
                         <td> <img src="http://local.dev/uploads/products/{{ cart.image }}" height=100 width=100 alt=""> </td>
                         <td> {{ cart.name }} </td>
@@ -25,30 +99,27 @@
                         <td> {{ cart.date }} </td>
                     </tr>
                 </tbody>
+                </ng-template>
             </table>
         </div>
         <div class="col-md-2">
             <h3> User Info </h3>
             <p><strong>ID: </strong> {{ userInfo.id  }}
-            <p> <strong>Name: </strong>{{ userInfo.name  }}
-            <p> <strong>Phone: </strong>{{ userInfo.phone  }}
-            <p> <strong>Address: </strong>{{ userInfo.address  }}
-            <form [formGroup]="phoneGroup">
-
-            <!-- Using javascript phone number format -->
-            <!--input formControlName="phone" type="text" class="form-control" id="phone" -->
-
-            <!-- using formgroup phone format not working -->
-            <!--input formControlName="phone" type="text" class="form-control" (ngModelChange)="changeFormat()" (keydown.backspace)="changeFormat('true')" -->
-
-            <!--using directive -->
-            <strong> Phone No</strong>
-                <input type="text" phoneFormat formControlName="phone" pattern="(xxxx)-xxx-xxxx" placeholder="(xxx)-xxx-xxxx" > <br>
-                <strong> Address: </strong>
-                <input type="text" placeholder=" Delivery Address" formControlName="address" > <br><br>
-                <button class="btn btn-info" on-click="checkOut()"> Checkout </button>
-            </form>
-
-        </div>
-    </div>
-</div>
+                <p> <strong>Name: </strong>{{ userInfo.name  }}
+                    <p> <strong>Phone: </strong>{{ userInfo.phone  }}
+                        <p> <strong>Address: </strong>{{ userInfo.address  }}
+                            <form [formGroup]="phoneGroup">
+                                <!-- Using javascript phone number format -->
+                                <!--input formControlName="phone" type="text" class="form-control" id="phone" -->
+                                <!-- using formgroup phone format not working -->
+                                <!--input formControlName="phone" type="text" class="form-control" (ngModelChange)="changeFormat()" (keydown.backspace)="changeFormat('true')" -->
+                                <!--using directive -->
+                                <strong> Phone No</strong>
+                                <input type="text" phoneFormat formControlName="phone" pattern="(xxxx)-xxx-xxxx" placeholder="(xxx)-xxx-xxxx" > <br>
+                                <strong> Address: </strong>
+                                <input type="text" placeholder=" Delivery Address" formControlName="address" > <br><br>
+                                <button class="btn btn-info" on-click="checkOut()"> Checkout </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>

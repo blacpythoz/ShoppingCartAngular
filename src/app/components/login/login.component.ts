@@ -54,6 +54,7 @@ export class LoginComponent {
 				this._userService.apiGetUserInformation(res.access_token).subscribe(res=>{
 					console.log("userinformation",res);
 					localStorage.setItem('user', JSON.stringify(res));
+
 				})
 				console.log("Logged in successfully");
 				//login successfully so redirect to return url

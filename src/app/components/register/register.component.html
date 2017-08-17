@@ -1,86 +1,98 @@
 <div class="container">
     <div class="row">
+    <toastnotify [message]="message" [type]="type" [display]="display" ></toastnotify>
+    </div>
+    <div class="row">
         <div class="col-md-offset-3 col-md-6">
             <div class="panel panel-default">
-            <div class="panel-body">
-                
-                <form [formGroup]="registerGroup" class="form-horizontal">
-                    <div class="col-md-10 col-md-offset-1">
-                        <h3 >Register New User</h3>
-                        <div class="form-group" [ngClass]="checkError('name') ? 'has-error': ''">
-                            <div class="row">
-                                <label class="control-label col-sm-offset-3" form="name" *ngIf="checkError('name')"> Add the name </label>
-                            </div>
-                            <div class="row">
-                                <label for="name" class="col-sm-2 control-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control input-sm chat-input" formControlName="name" placeholder="name" />
+                <div class="panel-body">
+                    
+                    <form [formGroup]="registerGroup" class="form-horizontal">
+                        <div class="col-md-10 col-md-offset-1">
+                            <h3 >Register New User</h3>
+                            <div class="form-group" [ngClass]="checkError('name') ? 'has-error': ''">
+                                <div class="row">
+                                    <label class="control-label col-sm-offset-3" form="name" *ngIf="checkError('name')"> Add the name </label>
+                                </div>
+                                <div class="row">
+                                    <label for="name" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control input-sm chat-input" formControlName="name" placeholder="name" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group" [ngClass]="checkError('name') ? 'has-error': ''">
-                            <div class="row">
-                                <label class="control-label col-sm-offset-3" *ngIf="checkError('password')"> Add the Password </label>
-                            </div>
-                            <div class="row">
-                                <label for="name" class="col-sm-2 control-label">Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control input-sm chat-input" formControlName="password" placeholder="password" />
+                            <div class="form-group" [ngClass]="checkError('name') ? 'has-error': ''">
+                                <div class="row">
+                                    <label class="control-label col-sm-offset-3" *ngIf="checkError('password')"> Add the Password </label>
+                                </div>
+                                <div class="row">
+                                    <label for="password" class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control input-sm chat-input" formControlName="password" placeholder="password" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group" [ngClass]="registerGroup.get('password_confirmation').errors && registerGroup.get('password_confirmation').touched ? 'has-error': ''">
-                            <div class="row">
-                                <label class="control-label col-sm-offset-3" *ngIf="registerGroup.get('password_confirmation').errors && registerGroup.get('password_confirmation').touched"> Password doesnot match </label>
-                            </div>
-                            <div class="row">
-                                <label for="name" class="col-sm-2 control-label">Confirm Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control input-sm chat-input" formControlName="password_confirmation" placeholder="Confirm the password" />
+                            <div class="form-group" [ngClass]="registerGroup.get('password_confirmation').errors && registerGroup.get('password_confirmation').touched ? 'has-error': ''">
+                                <div class="row">
+                                    <label class="control-label col-sm-offset-3" *ngIf="registerGroup.get('password_confirmation').errors && registerGroup.get('password_confirmation').touched"> Password doesnot match </label>
+                                </div>
+                                <div class="row">
+                                    <label for="password_confirmation" class="col-sm-2 control-label">Confirm Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control input-sm chat-input" formControlName="password_confirmation" placeholder="Confirm the password" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group" [ngClass]="checkError('email') ? 'has-error': ''">
-                            <div class="row">
-                                <label class="control-label col-sm-offset-3" *ngIf="checkError('email')"> Add the Email </label>
-                            </div>
-                            <div class="row">
-                                <label for="name" class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control input-sm chat-input" formControlName="email" placeholder="Email address" />
+                            <div class="form-group" [ngClass]="checkError('email') ? 'has-error': ''">
+                                <div class="row">
+                                    <label class="control-label col-sm-offset-3" *ngIf="checkError('email')"> Add the Email </label>
+                                </div>
+                                <div class="row">
+                                    <label for="email" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control input-sm chat-input" formControlName="email" placeholder="Email address" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group" [ngClass]="checkError('address') ? 'has-error': ''">
-                            <div class="row">
-                                <label class="control-label col-sm-offset-3" *ngIf="checkError('address')"> Add the Address </label>
-                            </div>
-                            <div class="row">
-                                <label for="address" class="col-sm-2 control-label">Address</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control input-sm chat-input" formControlName="address" placeholder="Your address" />
+                            <div class="form-group">  
+                                <div class="row">
+                                    <label for="dob" class="col-sm-2 control-label">Dob</label>
+                                    <div class="col-sm-10">
+                                        <datepicker startYear=2019 endYear=2020 ></datepicker>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group" [ngClass]="checkError('phone') ? 'has-error': ''">
-                            <div class="row">
-                                <label class="control-label col-sm-offset-3" *ngIf="checkError('phone')"> Add the phone </label>
-                            </div>
-                            <div class="row">
-                                <label for="address" class="col-sm-2 control-label">phone</label>
-                                <div class="col-sm-10">
-                                    <input type="tel" class="form-control input-sm chat-input" formControlName="phone" placeholder="Your phone" />
+
+                            <div class="form-group" [ngClass]="checkError('address') ? 'has-error': ''">
+                                <div class="row">
+                                    <label class="control-label col-sm-offset-3" *ngIf="checkError('address')"> Add the Address </label>
+                                </div>
+                                <div class="row">
+                                    <label for="address" class="col-sm-2 control-label">Address</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control input-sm chat-input" formControlName="address" placeholder="Your address" />
+                                    </div>
                                 </div>
                             </div>
+                            <div class="form-group" [ngClass]="checkError('phone') ? 'has-error': ''">
+                                <div class="row">
+                                    <label class="control-label col-sm-offset-3" *ngIf="checkError('phone')"> Add the phone </label>
+                                </div>
+                                <div class="row">
+                                    <label for="address" class="col-sm-2 control-label">phone</label>
+                                    <div class="col-sm-10">
+                                        <input type="tel" class="form-control input-sm chat-input" formControlName="phone" placeholder="Your phone" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrapper">
+                                <span class="group-btn">
+                                    <button href="#" [disabled]="registerGroup.invalid" class="btn btn-primary btn-md" on-click="registerUser()">Register</button>
+                                </span>
+                            </div>
                         </div>
-                        <div class="wrapper">
-                            <span class="group-btn">
-                                <button href="#" [disabled]="registerGroup.invalid" class="btn btn-primary btn-md" on-click="registerUser()">Register</button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

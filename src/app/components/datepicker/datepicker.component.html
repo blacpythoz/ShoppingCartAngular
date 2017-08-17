@@ -1,0 +1,15 @@
+<select name="dob_month" id="dob_month" class="input_pulldown" (change)="onMonthChange($event.target.value)">
+ <option  *ngFor="let month of months;let index=index" [value]="index+1">  
+    {{month}}
+  </option>
+</select>
+<select name="dob_day" id="dob_day" class="input_pulldown">
+<option  *ngFor="let day of days;let index=index" [value]="day">  
+    {{day}}
+  </option>
+</select>
+<select name="dob_year" id="dob_year" class="input_pulldown" (change)="onYearChange($event.target.value)">
+<option  *ngFor="let year of years;let index=index" [value]="year">  
+    {{year}}
+  </option>
+</select>
