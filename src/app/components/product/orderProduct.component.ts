@@ -19,6 +19,7 @@ export class OrderProductComponent {
 	product:Product;
 	// for user information while user logged in
 	userInfo:UserInfo;
+	inStock:boolean=true;
 
 
 	constructor(private _route:ActivatedRoute,private _productService:ProductService) {
@@ -36,6 +37,9 @@ export class OrderProductComponent {
 			this.id=id;
 			this._productService.getProduct(id).subscribe(res=>{
 				this.product=res.product;
+				if(res.product.stock == 0) {
+					this.inStock=false;
+				}
 				console.log('specififc product',res.product.medias);
 			})
 		})

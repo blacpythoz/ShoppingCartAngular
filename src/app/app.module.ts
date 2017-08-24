@@ -30,9 +30,12 @@ import { PhoneFormatDirective } from './components/checkout/phoneFormat.directiv
 
 import { LoggedInGuard } from './guards/loggedIn.guard';
 
+import { CustomRange } from './components/product/CustomRange.pipe';
+
+
 //import { CookieService } from 'angular2-cookie/services/cookies.service';
 
-
+import { ToastNotification } from './components/toastnotify/ToastNotification';
 import { AppComponent }  from './app.component';
 
 @NgModule({
@@ -60,6 +63,7 @@ import { AppComponent }  from './app.component';
                   CallBackComponent,
                   SingleProductComponent,
                   PhoneFormatDirective,
+                  CustomRange,
         				],
 
   bootstrap:[ 
@@ -71,7 +75,8 @@ import { AppComponent }  from './app.component';
     					UserService,
     					AuthGuard,
     					LoggedInGuard,
-    					SearchService
+    					SearchService,
+              ToastNotification
     			 	],
 })
 export class AppModule { }

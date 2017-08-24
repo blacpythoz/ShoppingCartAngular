@@ -7,7 +7,6 @@ import {FormGroup } from '@angular/forms';
 import { Product } from './product';
 
 
-
 @Component({
 	moduleId:module.id,
 	selector:'singleproduct',
@@ -17,15 +16,11 @@ import { Product } from './product';
 export class SingleProductComponent {
 	id:string;
 	product=new Product();
+	inStock:boolean=true;
+	addToCartGroup:FormGroup;
 
+	constructor(private _route:ActivatedRoute,private _productService:ProductService) {}
 
-	addToCartGroup=new FormGroup({
-		quantity:new FormControl(),
-	})
-	constructor(private _route:ActivatedRoute,private _productService:ProductService) {
-		}
-
-	
 	ngOnInit() {
 		this._route.params.map(params=>params['id'])
 		.subscribe((id)=>{
@@ -33,9 +28,21 @@ export class SingleProductComponent {
 			console.log(this.id);
 			this._productService.getProduct(id).subscribe(res=>{
 				this.product=res.product;
+				if(this.product.stock=="0") {
+					this.inStock=false;
+					console.log("NO STOCK DATA");
+				}
 				console.log(res);
 			})
 		})
+
+		this.addToCartGroup=new FormGroup({
+		quantity:new FormControl(),
+	})
+	}
+
+	checkStock() {
+		return this.inStock;
 	}
 
 	addToCart() {

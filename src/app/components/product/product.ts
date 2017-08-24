@@ -20,6 +20,7 @@ export class Product {
 	updated_at:string;
 	medias:Media[];
 	feature:Feature;
+	stock:string;
 	quantity:string;
 	//feature:Feature;
 }

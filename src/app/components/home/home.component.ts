@@ -82,18 +82,6 @@ export class HomeComponent {
 		 	cart.price=product.discountPrice;
 		 	cart.date=curr_date+'-'+curr_month+'-'+curr_year;
 
-		 // old method  before implementing order models
-		 // manually creating the json object and appending to the previous value
-		 // 		 	carts[product.id+'']={
-		 // 	"name":product.name,
-		 // 	"product_id":product.id,
-		 // 	"quantity":"1",
-		 // 	"image":product.medias[0].path,
-		 // 	"brand":product.brand,
-		 // 	"price":product.discountPrice,
-		 // 	"date":curr_date + "-" + curr_month + "-" + curr_year,
-
-		 // };
 		 carts[product.id+'']=cart;
 		localStorage.setItem('carts', JSON.stringify(carts));
 		
