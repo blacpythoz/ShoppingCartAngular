@@ -1,25 +1,43 @@
-import { Component,OnInit,Input,HostListener } from '@angular/core';
+import { Component,OnInit,Input,HostListener,forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 
 @Component({
 	moduleId:module.id,
 	selector:'datepicker',
 	templateUrl:'datepicker.component.html',
+	providers: [
+	{ 
+		provide: NG_VALUE_ACCESSOR,
+		useExisting: forwardRef(() => DatePickerComponent),
+		multi: true
+	}
+	]
+
 })
 
-export class DatePickerComponent {
+export class DatePickerComponent implements ControlValueAccessor{
 	@Input() startYear:number;
 	@Input() endYear:number;
 	@Input() monthFormat:string;
+	@Input() value:string; // notice the '_'
+
 	years:number[];
 	months:string[];
 	totalDays:number[];
 	days:number[];
+	year:number;
+	month:number;
+	day:number;
 
 	constructor() {
 		// standard date and month format
 		this.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		this.totalDays = [31,28,31,30,31,30,31,31,30,31,30,31];
 	}
+
+
+
 
 	ngOnInit() {
 		this.years=[];
@@ -50,6 +68,7 @@ export class DatePickerComponent {
 		for(var i=1;i<=this.totalDays[index-1];i++) {
 			this.days.push(i);
 		}
+		this.month=index;
 	}
 	
 	onYearChange(index:number) {
@@ -62,6 +81,20 @@ export class DatePickerComponent {
 			console.log("Not leap year");
 		}
 		this.onMonthChange(2);
+		this.year=index;
+	}
+	onDayChange(index:number) {
+		this.day=index;
+	}
+
+	writeValue() {
+		this.value=this.day+'/'+this.month+'/'+this.year;
+	}
+	registerOnChange() {
+		this.value=this.day+'/'+this.month+'/'+this.year;
+	}
+	registerOnTouched() {
+		this.value=this.day+'/'+this.month+'/'+this.year;
 	}
 
 }
